@@ -7,20 +7,30 @@
 </head>
 <body>
 
-<label data-slider="passwordLength">
-	<span data-slider-value-out></span> Zeichen gesamt
-	<input data-slider-value max="20" min="12" name="length" type="range">
-</label>
-<br>
+<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+	<div class="mdl-card__supporting-text">
+		<label data-slider="passwordLength">
+			<span data-slider-value-out></span> Zeichen gesamt
+			<p>
+				<input class="mdl-slider mdl-js-slider" data-slider-value max="20" min="12" name="length" type="range">
+			</p>
+		</label>
 
-<label>
-	Sonderzeichen
-	<input type="checkbox" name="specialChars" data-special-char>
-</label>
 
-<div data-password-generator>
-	<button data-create>Generate Password</button>
-	<input data-generated-password name="password" readonly type="text">
+		<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
+			<input type="checkbox" id="switch-1" name="specialChars" class="mdl-switch__input" checked data-special-char>
+			<span class="mdl-switch__label">Sonderzeichen</span>
+		</label>
+
+		<div data-password-generator>
+			<button data-create class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+				Generate Password
+			</button>
+			<input data-generated-password name="password" readonly type="text">
+			<button data-copy-password>Copy password</button>
+		</div>
+
+	</div>
 </div>
 
 

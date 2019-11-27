@@ -5,7 +5,8 @@ import {PasswordGenerator} from "../password-generator";
 	selector: 'password-generator',
 	childrenSelectors: [
 		'create',
-		'generated-password'
+		'generated-password',
+		'copy-password'
 	]
 })
 export class PasswordGeneratorComponent extends AbstractComponent {
@@ -21,8 +22,19 @@ export class PasswordGeneratorComponent extends AbstractComponent {
 	 * Appends a click listener to the "generate" button and triggers the password generation
 	 */
 	@EventListener('click', 'create')
-	public click(): void {
+	public generate(): void {
 		this.getDisplayInput().value = this.generator.generate();
+	}
+
+	/**
+	 * @description
+	 * Appends a click listener to the "generate" button and triggers the password generation
+	 */
+	@EventListener('click', 'copy-password')
+	public copy(): void {
+		this.getDisplayInput().select();
+		document.execCommand("Copy");
+		this.getDisplayInput().blur();
 	}
 
 	/**

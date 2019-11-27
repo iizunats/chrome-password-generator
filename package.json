@@ -13,7 +13,9 @@
 		"url": "https://github.com/chibat/chrome-extension-typescript-starter.git"
 	},
 	"dependencies": {
-		"iizuna": "^3.5.0"
+		"@types/material-design-lite": "^1.1.15",
+		"iizuna": "^3.5.0",
+		"material-design-lite": "^1.3.0"
 	},
 	"devDependencies": {
 		"@types/chrome": "0.0.86",
