@@ -4,7 +4,7 @@
  */
 export class Configs {
 	public static passwordLength?: number;
-	public static minSpecialCharacters: number = 0;
+	public static minSpecialCharacters: number = 1;
 
 	public static minNumbers: number = 1;
 	public static minLettersSmall: number = 1;
