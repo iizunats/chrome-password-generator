@@ -1,19 +1,21 @@
 import {AbstractComponent, Component, GlobalEventListener, OnReady} from "iizuna";
-import {Configs} from "../configs";
-import {PasswordGenerator} from "../password-generator";
+import {PasswordEntropyCalculator} from "../password-entropy-calculator";
 
 @Component({
 	selector: 'entropy-bits'
 })
 export class EntropyBitsComponent extends AbstractComponent implements OnReady {
-	element: HTMLSpanElement;
+	element: HTMLElement;
 
-	public onReady(): void {
-		this.calculateEntropyBits();
-	}
-
+	/**
+	 * @description
+	 * Updates the displayed entropy bits either when:
+	 * - The component is initialized
+	 * - The length of the password is updated
+	 * - The checkbox for "use special characters" was toggled
+	 */
 	@GlobalEventListener('update-password-length update-special-chars')
-	private calculateEntropyBits() {
-		this.element.innerText = Math.ceil(Math.log2(Math.pow(PasswordGenerator.getTotalCharList().length, Configs.passwordLength))) + '';
+	public onReady(): void {
+		this.element.innerText = PasswordEntropyCalculator.calculate() + '';
 	}
 }
