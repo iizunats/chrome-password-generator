@@ -1,17 +1,9 @@
+@import "node_modules/material-design-lite/src/color-definitions";
+
+$color-primary: $palette-indigo-500;
+$color-primary-dark: $palette-indigo-700;
+$color-accent: $palette-orange-A200;
+
 @import "node_modules/material-design-lite/src/material-design-lite.scss";
 @import "base";
 @import "icons";
-
-.demo-card-wide.mdl-card {
-	width: 512px;
-}
-
-.demo-card-wide > .mdl-card__title {
-	color: #ffffff;
-	height: 176px;
-	background: url('../assets/demos/welcome_card.jpg') center / cover;
-}
-
-.demo-card-wide > .mdl-card__menu {
-	color: #ffffff;
-}

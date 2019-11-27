@@ -6,43 +6,58 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link href="main.css" rel="stylesheet">
 </head>
-<body>
-
-<div class="demo-card-wide mdl-card mdl-shadow--2dp">
-	<div class="mdl-card__supporting-text">
-		<label data-slider="passwordLength">
-			<span data-slider-value-out></span> Zeichen gesamt
-			<p>
-				<input class="mdl-slider mdl-js-slider" data-slider-value max="128" min="8" name="length" type="range">
-			</p>
-		</label>
+<body style="width: 300px;">
 
 
+<div class="slider-wrapper mdl-grid" data-slider="passwordLength">
+	<div class="mdl-cell mdl-cell--2-col">
+		<span data-slider-value-out></span>
+		<i class="material-icons" id="length">text_rotation_none</i>
+
+		<div class="mdl-tooltip" data-mdl-for="length">
+			Password Length
+		</div>
+	</div>
+	<div class="mdl-cell mdl-cell--stretch">
+		<p>
+			<input class="mdl-slider mdl-js-slider" data-slider-value max="128" min="8" name="length" type="range">
+		</p>
+	</div>
+</div>
+
+
+<div class="slider-wrapper mdl-grid">
+	<div class="mdl-cell mdl-cell--3-col">
 		<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
 			<input type="checkbox" id="switch-1" name="specialChars" class="mdl-switch__input" checked data-special-char>
 			<span class="mdl-switch__label">Sonderzeichen</span>
 		</label>
-		<p>
-			Entropy Bits: <span data-entropy-bits>0</span>
-		</p>
+	</div>
+	<div class="mdl-cell mdl-cell--stretch">
+		Entropy Bits: <span data-entropy-bits>0</span>
+	</div>
+</div>
 
-		<div data-password-generator>
-			<button data-create class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-				Generate Password
-			</button>
-			<input data-generated-password name="password" readonly type="text">
-			<i class="material-icons hidden" id="not-pwnd" data-not-pwnd>done</i>
-			<div class="mdl-tooltip" data-mdl-for="not-pwnd">
-				Not Pwnd
-			</div>
-			<i class="material-icons hidden" id="pwnd" data-pwnd>done</i>
-			<div class="mdl-tooltip" data-mdl-for="pwnd">
-				Pwnd!
-			</div>
 
-			<button data-copy-password>Copy password</button>
+<div class="slider-wrapper mdl-grid" data-password-generator>
+	<div class="mdl-cell mdl-cell--3-col">
+		<button data-create class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+			Generate Password
+		</button>
+		<input data-generated-password name="password" readonly type="text">
+		<i class="material-icons hidden" id="not-pwnd" data-not-pwnd>done</i>
+		<div class="mdl-tooltip" data-mdl-for="not-pwnd">
+			Not Pwnd
+		</div>
+		<i class="material-icons hidden" id="pwnd" data-pwnd>done</i>
+		<div class="mdl-tooltip" data-mdl-for="pwnd">
+			Pwnd!
 		</div>
 
+		<button data-copy-password>Copy password</button>
+
+	</div>
+	<div class="mdl-cell mdl-cell--stretch">
 	</div>
 </div>
 
