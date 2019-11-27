@@ -6,6 +6,7 @@ export class Configs {
 	public static passwordLength?: number;
 	public static minSpecialCharacters: number = 1;
 
+	public static defaultLength: number = 12;
 	public static minNumbers: number = 1;
 	public static minLettersSmall: number = 1;
 	public static minLettersBig: number = 1;

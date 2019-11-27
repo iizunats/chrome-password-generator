@@ -29,9 +29,9 @@ export class SliderComponent extends AbstractComponent implements OnReady {
 	 * Initializes the slider and already updates the Configs Class property based by the configured minLength
 	 */
 	public onReady(): void {
-		this.getSliderElement().value = "12";
+		this.getSliderElement().value = Configs.defaultLength + '';
 		this.getSliderElement().min = this.minLength;
-		this.updateSliderValueOut(this.minLength);
+		this.updateSliderValueOut(Configs.defaultLength + '');
 	}
 
 	@EventListener('input change', 'slider-value')
