@@ -34,7 +34,7 @@ export class SliderComponent extends AbstractComponent implements OnReady {
 		this.updateSliderValueOut(this.minLength);
 	}
 
-	@EventListener('change', 'slider-value')
+	@EventListener('input change', 'slider-value')
 	public change(element: HTMLInputElement): void {
 		this.updateSliderValueOut(element.value);
 	}
