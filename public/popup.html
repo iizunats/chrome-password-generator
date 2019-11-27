@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Password generator</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link href="main.css" rel="stylesheet">
 </head>
 <body>
@@ -27,6 +28,15 @@
 				Generate Password
 			</button>
 			<input data-generated-password name="password" readonly type="text">
+			<i class="material-icons hidden" id="not-pwnd" data-not-pwnd>done</i>
+			<div class="mdl-tooltip" data-mdl-for="not-pwnd">
+				Not Pwnd
+			</div>
+			<i class="material-icons hidden" id="pwnd" data-pwnd>done</i>
+			<div class="mdl-tooltip" data-mdl-for="pwnd">
+				Pwnd!
+			</div>
+
 			<button data-copy-password>Copy password</button>
 		</div>
 

@@ -1,12 +1,15 @@
 import {AbstractComponent, Component, EventListener} from "iizuna";
 import {PasswordGenerator} from "../password-generator";
+import {Pwned} from "@iizuna/pwned-passwords/lib/utilities/pwned";
 
 @Component({
 	selector: 'password-generator',
 	childrenSelectors: [
 		'create',
 		'generated-password',
-		'copy-password'
+		'copy-password',
+		'not-pwnd',
+		'pwnd'
 	]
 })
 export class PasswordGeneratorComponent extends AbstractComponent {
@@ -23,7 +26,17 @@ export class PasswordGeneratorComponent extends AbstractComponent {
 	 */
 	@EventListener('click', 'create')
 	public generate(): void {
-		this.getDisplayInput().value = this.generator.generate();
+		const pw = this.generator.generate();
+		this.getDisplayInput().value = pw;
+		this.children['not-pwnd'][0].classList.add('hidden');
+		this.children['pwnd'][0].classList.add('hidden');
+		Pwned.haveIBeenPwned(pw).then((val) => {
+			if (val <= 0) {
+				this.children['not-pwnd'][0].classList.remove('hidden');
+			} else {
+				this.children['pwnd'][0].classList.remove('hidden');
+			}
+		})
 	}
 
 	/**
