@@ -24,16 +24,26 @@ export class SliderComponent extends AbstractComponent implements OnReady {
 	@ElementAttribute()
 	public slider: string = '';
 
+	private sliderElement?: HTMLInputElement;
+	private sliderLabel?: HTMLSpanElement;
+
 	/**
 	 * @description
 	 * Initializes the slider and already updates the Configs Class property based by the configured minLength
 	 */
 	public onReady(): void {
-		this.getSliderElement().value = Configs.defaultLength + '';
-		this.getSliderElement().min = this.minLength;
+		this.sliderLabel = this.children['slider-value-out'][0] as HTMLSpanElement;
+		this.sliderElement = this.children['slider-value'][0] as HTMLInputElement;
+		this.sliderElement.value = Configs.defaultLength + '';
+		this.sliderElement.min = this.minLength;
 		this.updateSliderValueOut(Configs.defaultLength + '');
 	}
 
+	/**
+	 * @description
+	 * Updates all parties when the slider was changed
+	 * @param {HTMLInputElement} element
+	 */
 	@EventListener('input change', 'slider-value')
 	public change(element: HTMLInputElement): void {
 		this.updateSliderValueOut(element.value);
@@ -46,23 +56,7 @@ export class SliderComponent extends AbstractComponent implements OnReady {
 	 */
 	private updateSliderValueOut(value: string): void {
 		Configs[this.slider] = +value;
-		this.getSliderLabel().innerText = Configs[this.slider] + '';
+		this.sliderLabel.innerText = Configs[this.slider] + '';
 		EventHelper.triggerCustomEvent('update-password-length');
-	}
-
-	/**
-	 * @description
-	 * Returns the first found "slider-value-out" element
-	 */
-	private getSliderLabel(): HTMLSpanElement {
-		return this.children['slider-value-out'][0] as HTMLSpanElement;
-	}
-
-	/**
-	 * @description
-	 * Returns the first found "slider-value" element
-	 */
-	private getSliderElement(): HTMLInputElement {
-		return this.children['slider-value'][0] as HTMLInputElement;
 	}
 }
