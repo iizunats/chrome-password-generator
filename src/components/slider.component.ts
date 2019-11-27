@@ -15,7 +15,7 @@ export class SliderComponent extends AbstractComponent implements OnReady {
 	 * Allows for a configuration of the minimum allowed value of the slider
 	 */
 	@ElementAttribute()
-	public minLength: string = '8';
+	public minLength: string = '12';
 
 	/**
 	 * @description

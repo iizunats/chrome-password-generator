@@ -8,7 +8,7 @@ export class PasswordGenerator {
 	 */
 	public generate() {
 		let password = PasswordGenerator.createRequiredChars(Configs.specialCharList, Configs.minSpecialCharacters);
-
+		console.log(Configs.minSpecialCharacters);
 		if (password.length <= Configs.passwordLength) { // If the special Characters are not more than the total string length
 			password += PasswordGenerator.createRequiredChars(Configs.numbersList, Configs.minNumbers);
 			password += PasswordGenerator.createRequiredChars(Configs.lettersSmallList, Configs.minLettersSmall);
@@ -16,6 +16,8 @@ export class PasswordGenerator {
 			password += PasswordGenerator.createRequiredChars(Configs.specialCharList, Configs.minSpecialCharacters);
 			password += PasswordGenerator.createFillingCharacters(password);
 		}
+
+		// @todo: ^(?=.*[0-9]+.*)(?=.*[A-Z]+.*)(?=.*[a-z]+.*)[\x21-\x7e]{3,}$
 
 		return PasswordGenerator.shuffleString(password);
 	}
@@ -46,7 +48,11 @@ export class PasswordGenerator {
 	 * Returns all defined characters that are possible for the password generation
 	 */
 	private static getTotalCharList(): string {
-		return Configs.numbersList + Configs.lettersSmallList + Configs.lettersBigList + Configs.specialCharList;
+		let total = '';
+		if (Configs.minSpecialCharacters > 0) {
+			total += Configs.specialCharList;
+		}
+		return total + Configs.numbersList + Configs.lettersSmallList + Configs.lettersBigList;
 	}
 
 	/**
