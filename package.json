@@ -13,14 +13,10 @@
 		"url": "https://github.com/chibat/chrome-extension-typescript-starter.git"
 	},
 	"dependencies": {
-		"iizuna": "^3.5.0",
-		"jquery": "^3.4.1",
-		"moment": "~2.24.0"
+		"iizuna": "^3.5.0"
 	},
 	"devDependencies": {
 		"@types/chrome": "0.0.86",
-		"@types/jest": "^24.0.19",
-		"@types/jquery": "^3.3.30",
 		"copy-webpack-plugin": "^5.0.3",
 		"ts-loader": "^5.4.5",
 		"browserify": "^16.2.3",
