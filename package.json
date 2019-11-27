@@ -1,17 +1,16 @@
 {
-	"name": "chrome-extension-typescript-starter",
+	"name": "chrome-password-generator",
 	"version": "1.0.0",
-	"description": "chrome-extension-typescript-starter",
+	"description": "A Password Generator for Chrome",
 	"main": "index.js",
 	"scripts": {
 		"build": "gulp"
 	},
-	"author": "",
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/chibat/chrome-extension-typescript-starter.git"
+	"author": {
+		"name": "Tim Rücker",
+		"email": "tim.ruecker@ymail.com"
 	},
+	"license": "MIT",
 	"dependencies": {
 		"@iizuna/pwned-passwords": "^1.0.0",
 		"@types/material-design-lite": "^1.1.15",
@@ -20,7 +19,6 @@
 	},
 	"devDependencies": {
 		"@types/chrome": "0.0.86",
-		"copy-webpack-plugin": "^5.0.3",
 		"ts-loader": "^5.4.5",
 		"browserify": "^16.2.3",
 		"gulp": "^4.0.2",
