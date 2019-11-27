@@ -1,4 +1,4 @@
-let {series, watch, dest, src} = require("gulp"),
+let {series, dest, src} = require("gulp"),
 	browserify = require("browserify"),
 	source = require('vinyl-source-stream'),
 	tsify = require("tsify"),
