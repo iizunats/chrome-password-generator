@@ -1,4 +1,4 @@
-import {Configs} from "./configs";
+import {Configs} from './configs';
 
 export class PasswordGenerator {
 

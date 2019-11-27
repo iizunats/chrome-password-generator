@@ -1,5 +1,5 @@
-import {AbstractComponent, Component, GlobalEventListener, OnReady} from "iizuna";
-import {PasswordEntropyCalculator} from "../password-entropy-calculator";
+import {AbstractComponent, Component, GlobalEventListener, OnReady} from 'iizuna';
+import {PasswordEntropyCalculator} from '../password-entropy-calculator';
 
 @Component({
 	selector: 'entropy-bits'

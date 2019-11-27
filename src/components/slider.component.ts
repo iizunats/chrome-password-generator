@@ -1,5 +1,5 @@
-import {AbstractComponent, Component, ElementAttribute, EventHelper, EventListener, OnReady} from "iizuna";
-import {Configs} from "../configs";
+import {AbstractComponent, Component, ElementAttribute, EventHelper, EventListener, OnReady} from 'iizuna';
+import {Configs} from '../configs';
 
 @Component({
 	selector: 'slider',

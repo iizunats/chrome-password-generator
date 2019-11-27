@@ -1,5 +1,5 @@
-import {Configs} from "./configs";
-import {PasswordGenerator} from "./password-generator";
+import {Configs} from './configs';
+import {PasswordGenerator} from './password-generator';
 
 export class PasswordEntropyCalculator {
 
@@ -18,10 +18,10 @@ export class PasswordEntropyCalculator {
 	}
 
 	private static getPasswordLength(passwordLength?: number) {
-		return typeof passwordLength === "number" ? passwordLength : Configs.passwordLength;
+		return typeof passwordLength === 'number' ? passwordLength : Configs.passwordLength;
 	}
 
 	private static getCharListLength(charListLength?: number) {
-		return typeof charListLength === "number" ? charListLength : PasswordGenerator.getTotalCharList().length;
+		return typeof charListLength === 'number' ? charListLength : PasswordGenerator.getTotalCharList().length;
 	}
 }

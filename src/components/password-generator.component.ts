@@ -1,6 +1,6 @@
-import {AbstractComponent, Component, EventListener, OnReady} from "iizuna";
-import {PasswordGenerator} from "../password-generator";
-import {Pwned} from "@iizuna/pwned-passwords/lib/utilities/pwned";
+import {AbstractComponent, Component, EventListener, OnReady} from 'iizuna';
+import {PasswordGenerator} from '../password-generator';
+import {Pwned} from '@iizuna/pwned-passwords/lib/utilities/pwned';
 
 @Component({
 	selector: 'password-generator',
@@ -58,7 +58,7 @@ export class PasswordGeneratorComponent extends AbstractComponent implements OnR
 	@EventListener('click', 'copy-password')
 	public copy(): void {
 		this.displayInput.select();
-		document.execCommand("Copy");
+		document.execCommand('Copy');
 		this.displayInput.blur();
 	}
 }
