@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Password generator</title>
+	<link href="main.css" rel="stylesheet">
+</head>
+<body>
+
+<label data-slider="passwordLength">
+	<span data-slider-value-out></span> Zeichen gesamt
+	<input data-slider-value max="20" min="8" name="length" type="range">
+</label>
+<br>
+<label data-min-length="0" data-slider="minSpecialCharacters">
+	<span data-slider-value-out></span> Sonderzeichen
+	<input data-slider-value max="20" min="8" name="length" type="range">
+</label>
+
+
+<label>
+	Sonderzeichen Liste
+	<input data-special-char-list name="special-chars" type="text">
+</label>
+<div data-password-generator>
+	<button data-create>Generate Password</button>
+	<input data-generated-password name="password" readonly type="text">
+</div>
+
+
+<script src="build.js"></script>
+</body>
+</html>
+
