@@ -1,4 +1,4 @@
-import {AbstractComponent, Component, EventListener} from "iizuna";
+import {AbstractComponent, Component, EventListener, OnReady} from "iizuna";
 import {PasswordGenerator} from "../password-generator";
 import {Pwned} from "@iizuna/pwned-passwords/lib/utilities/pwned";
 
@@ -12,13 +12,18 @@ import {Pwned} from "@iizuna/pwned-passwords/lib/utilities/pwned";
 		'pwnd'
 	]
 })
-export class PasswordGeneratorComponent extends AbstractComponent {
+export class PasswordGeneratorComponent extends AbstractComponent implements OnReady {
 
 	/**
 	 * @description
 	 * Initializes a single instance if the password generator
 	 */
 	private generator: PasswordGenerator = new PasswordGenerator();
+	private displayInput?: HTMLInputElement;
+
+	public onReady(): void {
+		this.displayInput = this.children['generated-password'][0] as HTMLInputElement;
+	}
 
 	/**
 	 * @description
@@ -26,17 +31,24 @@ export class PasswordGeneratorComponent extends AbstractComponent {
 	 */
 	@EventListener('click', 'create')
 	public generate(): void {
-		const pw = this.generator.generate();
-		this.getDisplayInput().value = pw;
+		this.displayInput.value = this.generator.generate();
+		this.updateHaveIBeenPwned();
+	}
+
+	/**
+	 * @description
+	 * Resets the have i been pwned check mark and then check whethes the password was pwnd or not
+	 */
+	private updateHaveIBeenPwned() {
 		this.children['not-pwnd'][0].classList.add('hidden');
 		this.children['pwnd'][0].classList.add('hidden');
-		Pwned.haveIBeenPwned(pw).then((val) => {
-			if (val <= 0) {
+		Pwned.haveIBeenPwned(this.displayInput.value).then((count) => {
+			if (count <= 0) {
 				this.children['not-pwnd'][0].classList.remove('hidden');
 			} else {
 				this.children['pwnd'][0].classList.remove('hidden');
 			}
-		})
+		});
 	}
 
 	/**
@@ -45,16 +57,8 @@ export class PasswordGeneratorComponent extends AbstractComponent {
 	 */
 	@EventListener('click', 'copy-password')
 	public copy(): void {
-		this.getDisplayInput().select();
+		this.displayInput.select();
 		document.execCommand("Copy");
-		this.getDisplayInput().blur();
-	}
-
-	/**
-	 * @description
-	 * Returns the first found "generated-password" element
-	 */
-	private getDisplayInput(): HTMLInputElement {
-		return this.children['generated-password'][0] as HTMLInputElement;
+		this.displayInput.blur();
 	}
 }
