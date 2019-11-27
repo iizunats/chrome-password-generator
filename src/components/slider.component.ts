@@ -1,4 +1,4 @@
-import {AbstractComponent, Component, ElementAttribute, EventListener, OnReady} from "iizuna";
+import {AbstractComponent, Component, ElementAttribute, EventHelper, EventListener, OnReady} from "iizuna";
 import {Configs} from "../configs";
 
 @Component({
@@ -47,6 +47,7 @@ export class SliderComponent extends AbstractComponent implements OnReady {
 	private updateSliderValueOut(value: string): void {
 		Configs[this.slider] = +value;
 		this.getSliderLabel().innerText = Configs[this.slider] + '';
+		EventHelper.triggerCustomEvent('update-password-length');
 	}
 
 	/**

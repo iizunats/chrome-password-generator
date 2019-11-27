@@ -1,4 +1,4 @@
-import {AbstractComponent, Component, EventListener} from "iizuna";
+import {AbstractComponent, Component, EventHelper, EventListener} from "iizuna";
 import {Configs} from "../configs";
 
 @Component({
@@ -10,5 +10,6 @@ export class SpecialCharComponent extends AbstractComponent {
 	@EventListener()
 	change() {
 		Configs.minSpecialCharacters = +this.element.checked;
+		EventHelper.triggerCustomEvent('update-special-chars');
 	}
 }

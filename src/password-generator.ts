@@ -47,7 +47,7 @@ export class PasswordGenerator {
 	 * @description
 	 * Returns all defined characters that are possible for the password generation
 	 */
-	private static getTotalCharList(): string {
+	public static getTotalCharList(): string {
 		let total = '';
 		if (Configs.minSpecialCharacters > 0) {
 			total += Configs.specialCharList;
