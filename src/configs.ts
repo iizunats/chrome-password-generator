@@ -10,7 +10,7 @@ export class Configs {
 	public static minLettersSmall: number = 1;
 	public static minLettersBig: number = 1;
 
-	public static specialCharList: string = '@';
+	public static specialCharList: string = ',.:-_#+~<>!$%&(){}=?@';
 
 	public static numbersList: string = '0123456789';
 	public static lettersSmallList: string = 'abcdefghijklmnopqrstuvwxyz';
