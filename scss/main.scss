@@ -1,9 +1,6 @@
 @import "node_modules/material-design-lite/src/color-definitions";
-
-$color-primary: $palette-indigo-500;
-$color-primary-dark: $palette-indigo-700;
-$color-accent: $palette-orange-A200;
-
+@import "vars";
 @import "node_modules/material-design-lite/src/material-design-lite.scss";
 @import "base";
 @import "icons";
+@import "grid";

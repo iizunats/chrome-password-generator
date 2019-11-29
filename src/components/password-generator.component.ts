@@ -1,4 +1,4 @@
-import {AbstractComponent, Component, EventListener, OnReady} from 'iizuna';
+import {AbstractComponent, Component, EventListener, GlobalEventListener, OnReady} from 'iizuna';
 import {PasswordGenerator} from '../password-generator';
 import {Pwned} from '@iizuna/pwned-passwords/lib/utilities/pwned';
 
@@ -23,17 +23,30 @@ export class PasswordGeneratorComponent extends AbstractComponent implements OnR
 
 	public onReady(): void {
 		this.displayInput = this.children['generated-password'][0] as HTMLInputElement;
+		this.generate();
 	}
 
 	/**
 	 * @description
 	 * Appends a click listener to the "generate" button and triggers the password generation
 	 */
-	@EventListener('click', 'create')
+	@GlobalEventListener('update-password-length update-special-chars')
 	public generate(): void {
 		this.displayInput.value = this.generator.generate();
+		this.children['create'][0].innerText = this.displayInput.value;
 		this.updateHaveIBeenPwned();
 	}
+
+
+	@EventListener('click', 'create')
+	public copyPassword(): void {
+		this.displayInput.select();
+		document.execCommand('Copy');
+		this.displayInput.blur();
+		this.generate();
+		// @todo: show info that copy was a success
+	}
+
 
 	/**
 	 * @description
@@ -49,16 +62,5 @@ export class PasswordGeneratorComponent extends AbstractComponent implements OnR
 				this.children['pwnd'][0].classList.remove('hidden');
 			}
 		});
-	}
-
-	/**
-	 * @description
-	 * Appends a click listener to the "generate" button and triggers the password generation
-	 */
-	@EventListener('click', 'copy-password')
-	public copy(): void {
-		this.displayInput.select();
-		document.execCommand('Copy');
-		this.displayInput.blur();
 	}
 }

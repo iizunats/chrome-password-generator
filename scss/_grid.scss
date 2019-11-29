@@ -1,0 +1,38 @@
+.row {
+	float: left;
+
+	&::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	&--full-width {
+		width: 100%;
+	}
+
+	&--max-width {
+		width: calc(100% + 52px);
+		margin-left: -26px;
+	}
+
+	&:not(:last-child) {
+		margin-bottom: 10px;
+	}
+}
+
+.column {
+	float: left;
+
+	&--align-right {
+		float: right;
+	}
+
+	&--space-right {
+		margin-right: 10px;
+	}
+
+	&--space-right-large {
+		margin-right: 30px;
+	}
+}

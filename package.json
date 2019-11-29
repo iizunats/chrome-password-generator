@@ -4,7 +4,8 @@
 	"description": "A Password Generator for Chrome",
 	"main": "index.js",
 	"scripts": {
-		"build": "gulp"
+		"build": "gulp",
+		"build-sass": "gulp sass"
 	},
 	"author": {
 		"name": "Tim Rücker",
