@@ -44,7 +44,12 @@ export class PasswordGeneratorComponent extends AbstractComponent implements OnR
 		document.execCommand('Copy');
 		this.displayInput.blur();
 		this.generate();
-		// @todo: show info that copy was a success
+		chrome.notifications.create(this.displayInput.value, {
+			title: 'Zwischenablage',
+			message: 'Passwort erfolgreich kopiert',
+			type: 'basic',
+			iconUrl: 'icon.png'
+		});
 	}
 
 
