@@ -46,8 +46,8 @@ export class PasswordGeneratorComponent extends AbstractComponent implements OnR
 		this.displayInput.blur();
 		this.generate();
 		chrome.notifications.create(this.displayInput.value, {
-			title: 'Zwischenablage',
-			message: 'Passwort erfolgreich kopiert',
+			title: 'Clipboard',
+			message: 'Password successfully copied',
 			type: 'basic',
 			iconUrl: 'icon.png'
 		});

@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 
 	"name": "Chrome Password Generator",
-	"description": "chrome-pw-generator",
+	"description": "Chrome Password Generator",
 	"version": "1.0",
 	"browser_action": {
 		"default_icon": "icon.png",
