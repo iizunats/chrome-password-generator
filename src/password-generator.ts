@@ -8,7 +8,6 @@ export class PasswordGenerator {
 	 */
 	public generate() {
 		let password = PasswordGenerator.createRequiredChars(Configs.specialCharList, Configs.minSpecialCharacters);
-		console.log(Configs.minSpecialCharacters);
 		if (password.length <= Configs.passwordLength) { // If the special Characters are not more than the total string length
 			password += PasswordGenerator.createRequiredChars(Configs.numbersList, Configs.minNumbers);
 			password += PasswordGenerator.createRequiredChars(Configs.lettersSmallList, Configs.minLettersSmall);

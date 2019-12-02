@@ -9,7 +9,8 @@ import {Pwned} from '@iizuna/pwned-passwords/lib/utilities/pwned';
 		'generated-password',
 		'copy-password',
 		'not-pwnd',
-		'pwnd'
+		'pwnd',
+		'refresh'
 	]
 })
 export class PasswordGeneratorComponent extends AbstractComponent implements OnReady {
@@ -45,11 +46,16 @@ export class PasswordGeneratorComponent extends AbstractComponent implements OnR
 		this.displayInput.blur();
 		this.generate();
 		chrome.notifications.create(this.displayInput.value, {
-			title: 'Zwischenablage',
-			message: 'Passwort erfolgreich kopiert',
+			title: 'Clipboard',
+			message: 'Password successfully copied',
 			type: 'basic',
 			iconUrl: 'icon.png'
 		});
+	}
+
+	@EventListener('click', 'refresh')
+	public refreshPassword(): void {
+		this.generate();
 	}
 
 

@@ -9,7 +9,7 @@
 <body data-slider="passwordLength" data-password-generator>
 
 <div class="row row--full-width">
-	Passwortlänge: <span data-slider-value-out></span>
+	Password length: <span data-slider-value-out></span>
 </div>
 <div class="row row--max-width">
 	<input class="mdl-slider mdl-js-slider" data-slider-value max="128" min="8" name="length" type="range">
@@ -19,7 +19,7 @@
 	<div class="column column--space-right">
 		<img src="omega.svg" id="omega" />
 		<div class="mdl-tooltip" data-mdl-for="omega">
-			Sonderzeichen
+			Special characters
 		</div>
 	</div>
 	<div class="column column--space-right-large" style="width: 36px;">
@@ -28,7 +28,13 @@
 		</label>
 	</div>
 	<div class="column" style="line-height: 24px;">
-		Entropie Bits: <span data-entropy-bits>0</span>
+		Entropie bits: <span data-entropy-bits>0</span>
+	</div>
+	<div class="column column--space-left-large" data-refresh>
+		<img src="refresh.svg" id="refresh" />
+		<div class="mdl-tooltip" data-mdl-for="refresh">
+			Refresh
+		</div>
 	</div>
 </div>
 <div class="row row--full-width">
@@ -36,7 +42,7 @@
 		<button
 			data-create
 			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--primary"
-			style="width: 240px;text-transform: none;">
+			style="width: 240px;text-transform: none;white-space: nowrap;overflow:hidden;display:inline-block;text-overflow: ellipsis;">
 			create
 		</button>
 	</div>
