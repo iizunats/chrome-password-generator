@@ -4,10 +4,15 @@
 		"target": "es6",
 		"noImplicitAny": false,
 		"sourceMap": false,
-		"rootDir": "src",
 		"outDir": "public",
 		"noEmitOnError": true,
 		"typeRoots": ["node_modules/@types"],
 		"experimentalDecorators": true
-	}
+	},
+	"include": [
+		"src"
+	],
+	"exclude": [
+		"node_modules"
+	]
 }
