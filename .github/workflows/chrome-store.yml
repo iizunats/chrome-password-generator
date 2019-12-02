@@ -1,0 +1,32 @@
+on:
+  push:
+    branches:
+      - master
+
+env:
+  APP_ID: jpiiglbgnhbbenjgfhjepgnomkicjenc
+  NODE_VERSION: '10.15.0'
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-16.04
+    steps:
+    - uses: actions/checkout@master
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+    - name: npm install, build, and test
+      run: |
+        # Build and test the project, then
+        # deploy to Azure Web App.
+        npm install
+        npm run build --if-present
+    - name: 'Deploy to Chrome store'
+      run: |
+        if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ACCESS_TOKEN=$(curl "https://accounts.google.com/o/oauth2/token" -d "client_id=715212124090-mq6s36n5pgovlcfpueubp1ap4i00p5hm.apps.googleusercontent.com&client_secret=cDnv8r-Tzle0l2ycSVwh_tK1&refresh_token=1//039o6BO64It_yCgYIARAAGAMSNwF-L9Ir8tfzUAefdoCCaxh3-NNf5miwc84nlWT4fklPqaKjCoqo9Ksr2PFnoFneHDKspUxRElA&grant_type=refresh_token&redirect_uri=urn:ietf:wg:oauth:2.0:oob" | jq -r .access_token)
+              curl -H "Authorization: Bearer ${ACCESS_TOKEN}" -H "x-goog-api-version: 2" -X PUT -T public.zip -v "https://www.googleapis.com/upload/chromewebstore/v1.1/items/jpiiglbgnhbbenjgfhjepgnomkicjenc"
+              curl -H "Authorization: Bearer ${ACCESS_TOKEN}" -H "x-goog-api-version: 2" -H "Content-Length: 0" -X POST -v "https://www.googleapis.com/chromewebstore/v1.1/items/jpiiglbgnhbbenjgfhjepgnomkicjenc/publish"
+        fi
