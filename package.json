@@ -46,7 +46,7 @@
 		"gulp-uglify": "^3.0.2",
 		"jsdom": "^16.5.0",
 		"jsdom-global": "^3.0.2",
-		"mocha": "^5.2.0",
+		"mocha": "^10.1.0",
 		"node-sass": "^7.0.0",
 		"nyc": "^14.1.1",
 		"ts-loader": "^5.4.5",
