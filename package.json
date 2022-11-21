@@ -41,7 +41,7 @@
 		"chai": "^4.2.0",
 		"gulp": "^4.0.2",
 		"gulp-cli": "^2.2.0",
-		"gulp-sass": "^4.0.2",
+		"gulp-sass": "^5.1.0",
 		"gulp-typescript": "^5.0.1",
 		"gulp-uglify": "^3.0.2",
 		"jsdom": "^16.5.0",
